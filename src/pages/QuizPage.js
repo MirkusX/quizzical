@@ -1,18 +1,10 @@
-import React, {
-  Fragment,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { ArrContext, CorrectContext, DataContext } from "../components/Context";
+import { CorrectContext, DataContext } from "../components/Context";
 
 import {
   StyledAnswerDiv,
   StyledButton,
-  StyledButtonDiv,
   StyledContainer,
   StyledSection,
 } from "../components/StyledComponents";
