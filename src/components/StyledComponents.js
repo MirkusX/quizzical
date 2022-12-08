@@ -20,6 +20,11 @@ export const StyledButton = styled.button`
       return `
     background: #4D5B9E`;
   }}
+  ${(props) => {
+    if (props.correct)
+      return `
+    background: green;`;
+  }}
 `;
 
 export const StyledSection = styled.section``;
