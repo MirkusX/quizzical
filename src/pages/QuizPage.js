@@ -11,15 +11,16 @@ import {
 
 export const QuizPage = () => {
   const { content } = useContext(ContentContext);
-  const [correct, setCorrect] = useState();
+  const [correct, setCorrect] = useState(0);
 
   const answeredArr = [];
-  const chooseAnswer = (e, text, value) => {
+  const chooseAnswer = (e, text) => {
     e.target.style.backgroundColor = "blue";
     e.target.parentNode.style.pointerEvents = "none";
 
-    if (value == "true") {
+    if (e.target.value == "true") {
       answeredArr.push(text);
+      console.log(answeredArr);
     }
   };
 
@@ -54,7 +55,7 @@ export const QuizPage = () => {
                     <StyledButton
                       className="a"
                       value={item.value}
-                      onClick={(e) => chooseAnswer(e, item.text, item.value)}
+                      onClick={(e) => chooseAnswer(e, item.text)}
                     >
                       {item.text}
                     </StyledButton>

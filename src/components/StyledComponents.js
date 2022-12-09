@@ -15,15 +15,11 @@ export const StyledButton = styled.button`
   display: inline-block;
   padding: 1em;
   font-size: 1rem;
+  cursor: pointer;
   ${(props) => {
     if (props.notA)
       return `
     background: #4D5B9E`;
-  }}
-  ${(props) => {
-    if (props.correct)
-      return `
-    background: green;`;
   }}
 `;
 
