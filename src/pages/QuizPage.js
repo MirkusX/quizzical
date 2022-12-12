@@ -20,14 +20,12 @@ export const QuizPage = () => {
 
     if (e.target.value == "true") {
       answeredArr.push(text);
-      console.log(answeredArr);
     }
   };
 
   const checkAnswers = () => {
     const answersElement = document.getElementsByClassName("a");
     const answersArr = Object.entries(answersElement);
-    console.log("h");
     answersArr.map((item, index) => {
       if (item[1].value == "true") {
         item[1].style.backgroundColor = "green";
@@ -53,6 +51,7 @@ export const QuizPage = () => {
                 {content[index].ass.map((item, index) => {
                   return (
                     <StyledButton
+                      key={index}
                       className="a"
                       value={item.value}
                       onClick={(e) => chooseAnswer(e, item.text)}
