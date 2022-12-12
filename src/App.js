@@ -10,6 +10,7 @@ function App() {
   const [data, setData] = useState();
   const [error, setError] = useState();
   const [content, setContent] = useState([]);
+  //Gets data
   const getData = () => {
     axios
       .get("https://opentdb.com/api.php?amount=10&type=multiple")

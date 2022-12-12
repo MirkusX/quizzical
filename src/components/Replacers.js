@@ -1,3 +1,5 @@
+//Replacers for broken characters
+
 export const Replacements = {
   "&amp;;": "&",
   "&quot;": '"',

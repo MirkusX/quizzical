@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ContentContext } from "../components/Context";
+import { ContentContext, DataContext } from "../components/Context";
 
 import {
   StyledAnswerDiv,
@@ -10,10 +10,12 @@ import {
 } from "../components/StyledComponents";
 
 export const QuizPage = () => {
+  const { data } = useContext(DataContext);
   const { content } = useContext(ContentContext);
   const [correct, setCorrect] = useState(0);
 
   const answeredArr = [];
+  //Makes it so that whatever element user clicks turns blue, pushes true answer to array for later use
   const chooseAnswer = (e, text) => {
     e.target.style.backgroundColor = "blue";
     e.target.parentNode.style.pointerEvents = "none";
@@ -22,7 +24,7 @@ export const QuizPage = () => {
       answeredArr.push(text);
     }
   };
-
+  //Checks if answer is true, if so adds green background and uses array above to check how many answers are correct
   const checkAnswers = () => {
     const answersElement = document.getElementsByClassName("a");
     const answersArr = Object.entries(answersElement);
@@ -43,11 +45,13 @@ export const QuizPage = () => {
         <h1>Quiz</h1>
       </div>
       <StyledContainer>
+        {/* Displays questions */}
         {content.map((item, index) => {
           return (
             <StyledAnswerDiv key={index}>
               <div>
                 <h2>{item.question}</h2>
+                {/* Displays answers */}
                 {content[index].ass.map((item, index) => {
                   return (
                     <StyledButton
@@ -65,10 +69,13 @@ export const QuizPage = () => {
           );
         })}
       </StyledContainer>
+      {/* On click checks answers */}
       <StyledButton onClick={() => checkAnswers()}>Check Answers</StyledButton>
+      {/* Displays how many questions user answered correct */}
       <p>You have {correct}/10 correct</p>
+      <p>DON'T RELOAD THE PAGE, PRESS PLAY AGAIN!</p>
+      {/* Links back to homepage to reload API and get new questions */}
       <Link to="/">
-        <p>DON'T RELOAD THE PAGE, PRESS PLAY AGAIN!</p>
         <StyledButton>Play again</StyledButton>
       </Link>
     </StyledSection>

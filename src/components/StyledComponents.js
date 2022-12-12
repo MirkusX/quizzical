@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+//Styling
+
 export const StyledAnswerDiv = styled.div`
   display: flex;
   border-bottom: solid gray 1px;
