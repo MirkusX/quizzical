@@ -22,7 +22,7 @@ function App() {
   };
   useEffect(() => {
     getData();
-  }, []);
+  }, [content]);
   if (data) {
     return (
       <DataContext.Provider value={{ data, setData }}>

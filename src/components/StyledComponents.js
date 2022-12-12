@@ -16,6 +16,7 @@ export const StyledButton = styled.button`
   padding: 1em;
   font-size: 1rem;
   cursor: pointer;
+  font-family: "Zen Dots", cursive;
   ${(props) => {
     if (props.notA)
       return `

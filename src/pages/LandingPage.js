@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrContext, ContentContext, DataContext } from "../components/Context";
+import { Replacements, Replacers, ToBeReplaced } from "../components/Replacers";
 import { StyledButton } from "../components/StyledComponents";
 
 export const LandingPage = () => {
@@ -8,15 +9,22 @@ export const LandingPage = () => {
   const { data } = useContext(DataContext);
   const { setContent, content } = useContext(ContentContext);
 
+  const replaceChars = (props) => {
+    return props.replace(
+      /((&amp;;|&quot;|&#039;|&rsquo;|&ldquo;|&rdquo;|&eacute;|&shy;|&Uuml;|&Aacute;|&aacute;))/g,
+      (m) => Replacements[m]
+    );
+  };
+
   data.results.forEach((item, index) => {
     answers.push({
-      question: item.question,
+      question: replaceChars(item.question),
 
       ass: [
-        { text: item.correct_answer, value: true },
-        { text: item.incorrect_answers[0], value: false },
-        { text: item.incorrect_answers[1], value: false },
-        { text: item.incorrect_answers[2], value: false },
+        { text: replaceChars(item.correct_answer), value: true },
+        { text: replaceChars(item.incorrect_answers[0]), value: false },
+        { text: replaceChars(item.incorrect_answers[1]), value: false },
+        { text: replaceChars(item.incorrect_answers[2]), value: false },
       ],
     });
   });

@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { ContentContext, DataContext } from "../components/Context";
+import { ContentContext } from "../components/Context";
 
 import {
   StyledAnswerDiv,
